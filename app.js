@@ -8,7 +8,15 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://mifoas.com',
+    'https://www.mifoas.com',
+    'http://localhost:3847',
+    'http://localhost:3000'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Serve static files from the 'public' directory
